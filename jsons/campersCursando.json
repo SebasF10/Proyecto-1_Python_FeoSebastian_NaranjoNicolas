@@ -1,0 +1,5 @@
+[
+{"IdCamperCursando":1,"nombres":"Alejandro","apellidos":"Quintero","direccion":"Calle 22 #14-56","acudiente":"Marcela Torres","telefono_contacto":"3104567890","estado":"Cursando","Riesgo":"Bajo","grupo":"P2"},
+{"IdCamperCursando":2,"nombres":"Valentina","apellidos":"Muñoz","direccion":"Carrera 18 #33-72","acudiente":"Javier Castellanos","telefono_contacto":"3115678901","estado":"Cursando","Riesgo":"medio","grupo":"P1"},
+{"IdCamperCursando":3,"nombres":"Mateo Andres","apellidos":"Salazar","direccion":"Calle 5 #27-19","acudiente":"Diana Romero","telefono_contacto":"3126789012","estado":"Cursando","Riesgo":"Alto","grupo":"C2"}
+]

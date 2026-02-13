@@ -1,4 +1,4 @@
-{
+
 
   "mafe": {
     "password_hash": "mafe1234",
@@ -56,5 +56,4 @@
         "especialidad": ["JAVA"],
         "rol": "Trainer"
     }
-    [
 

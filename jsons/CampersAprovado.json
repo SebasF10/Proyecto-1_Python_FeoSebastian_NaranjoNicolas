@@ -1,0 +1,7 @@
+[
+{"IdCamperAprobado":1,"nombres":"Andres Camilo","apellidos":"Buitrago","direccion":"Calle 28 #16-54","acudiente":"Martha Salinas","telefono_contacto":"3304567810","estado":"Aprobado"},
+{"IdCamperAprobado":2,"nombres":"Valeria Sofia","apellidos":"Nieto","direccion":"Carrera 12 #34-67","acudiente":"Carlos Lemus","telefono_contacto":"3315678921","estado":"Aprobado"},
+{"IdCamperAprobado":3,"nombres":"Juan Sebastian","apellidos":"Galvis","direccion":"Calle 7 #22-18","acudiente":"Diana Palacios","telefono_contacto":"3326789032","estado":"Aprobado"},
+{"IdCamperAprobado":4,"nombres":"Maria Fernanda","apellidos":"Torres","direccion":"Carrera 20 #15-39","acudiente":"Ricardo Montiel","telefono_contacto":"3337890143","estado":"Aprobado"},
+{"IdCamperAprobado":5,"nombres":"Santiago Andres","apellidos":"Cifuentes","direccion":"Calle 50 #11-82","acudiente":"Paola Navarro","telefono_contacto":"3348901254","estado":"Aprobado"}
+]

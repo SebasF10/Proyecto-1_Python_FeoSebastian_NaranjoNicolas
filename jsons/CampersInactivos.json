@@ -1,0 +1,7 @@
+[
+{"IdCamperInactivo":1,"nombres":"Santiago","apellidos":"Ariza","direccion":"Calle 40 #12-67","acudiente":"Claudia Herrera","telefono_contacto":"3204567891","estado":"Graduado"},
+{"IdCamperInactivo":2,"nombres":"Daniela","apellidos":"Pardo","direccion":"Carrera 6 #28-14","acudiente":"Fernando Rios","telefono_contacto":"3215678902","estado":"Inactivo"},
+{"IdCamperInactivo":3,"nombres":"Juan Esteban","apellidos":"Luna","direccion":"Calle 15 #9-88","acudiente":"Martha Ceballos","telefono_contacto":"3226789013","estado":"Expulsado"},
+{"IdCamperInactivo":4,"nombres":"Camila","apellidos":"Vergara","direccion":"Carrera 19 #41-25","acudiente":"Oscar Medina","telefono_contacto":"3237890124","estado":"Graduado"},
+{"IdCamperInactivo":5,"nombres":"Felipe","apellidos":"Cabrera","direccion":"Calle 63 #30-10","acudiente":"Patricia Soler","telefono_contacto":"3248901235","estado":"Inactivo"}
+]
