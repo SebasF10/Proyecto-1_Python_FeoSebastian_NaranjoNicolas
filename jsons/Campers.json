@@ -1,0 +1,30 @@
+[
+  {
+    "idCamper": 1,
+    "rol": "camper",
+    "nombre": "Juan",
+    "apellido": "Martinez",
+    "acudiente": "Laura Fernandez",
+    "gmail": "Juanmartin@gmail.com",
+    "contraseña": "12345",
+    "telefono": "3004567890",
+    "direccion": "Calle 25 #14-67",
+    "estado": "Inscrito",
+    "riesgo": null,
+    "grupo": null
+  },
+  {
+    "idCamper": 2,
+    "rol": "camper",
+    "nombre": "sebas",
+    "apellido": "f",
+    "acudiente": "mau",
+    "gmail": "fulano@gmail.com",
+    "contraseña": "12345",
+    "telefono": "304343422323",
+    "direccion": "calle 1",
+    "estado": "Proceso de inscripción",
+    "riesgo": null,
+    "grupo": null
+  }
+]

@@ -4,6 +4,8 @@
     {
         "id": 1,
         "nombre": "Edwin Salas",
+        "gmail": "edwin.salas@gmail.com",
+        "contraseña": "pass1234",
         "hora_inicio": 6,
         "hora_fin": 14,
         "especialidad": ["JAVA", "NETCORE"],
@@ -12,6 +14,8 @@
     {
         "id":2,
         "nombre": "Pedro",
+        "gmail": "pedro@gmail.com",
+        "contraseña": "pedro123",
         "hora_inicio": 6,
         "hora_fin": 18,
         "especialidad": ["NodeJS", "JAVA"],
@@ -20,6 +24,8 @@
     {
         "id":3,
         "nombre": "Jholver",
+        "gmail": "jholver@gmail.com",
+        "contraseña": "jholver123",
         "hora_inicio": 6,
         "hora_fin": 14,
         "especialidad": ["JAVA", "NETCORE"],
@@ -28,6 +34,8 @@
     {
         "id":4,
         "nombre": "Cristian",
+        "gmail": "cristian@gmail.com",
+        "contraseña": "cristian123",
         "hora_inicio": 10,
         "hora_fin": 18,
         "especialidad": ["JAVA", "NodeJS"],
@@ -36,6 +44,8 @@
     {
         "id":5,
         "nombre": "Kevin David",
+        "gmail": "kevin.david@gmail.com",
+        "contraseña": "kevin123",
         "hora_inicio": 6,
         "hora_fin": 14,
         "especialidad": ["JAVA"],
@@ -44,6 +54,8 @@
     {
         "id":6,
         "nombre": "Carlos Rueda",
+        "gmail": "carlos.rueda@gmail.com",
+        "contraseña": "carlos123",
         "hora_inicio": 14, 
         "hora_fin": 22,
         "especialidad": ["JAVA"],

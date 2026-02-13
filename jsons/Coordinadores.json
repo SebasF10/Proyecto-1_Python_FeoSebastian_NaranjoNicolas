@@ -1,0 +1,17 @@
+[
+	{
+		"id": 1,
+		"nombre": "mafe",
+		"gmail": "mafe@gmail.com",
+		"contraseña": "mafe123",
+		"rol": "Coordinador"
+	},
+	{
+		"id": 2,
+		"nombre": "coordinador2",
+		"gmail": "coordinador2@gmail.com",
+		"contraseña": "coord234",
+		"rol": "Coordinador"
+	}
+]
+
