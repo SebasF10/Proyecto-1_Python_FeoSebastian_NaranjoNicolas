@@ -1,0 +1,52 @@
+
+[
+    
+    {
+        "id": 1,
+        "nombre": "Edwin Salas",
+        "hora_inicio": 6,
+        "hora_fin": 14,
+        "especialidad": ["JAVA", "NETCORE"],
+        "rol": "Trainer"
+    },
+    {
+        "id":2,
+        "nombre": "Pedro",
+        "hora_inicio": 6,
+        "hora_fin": 18,
+        "especialidad": ["NodeJS", "JAVA"],
+        "rol": "Trainer"
+    },
+    {
+        "id":3,
+        "nombre": "Jholver",
+        "hora_inicio": 6,
+        "hora_fin": 14,
+        "especialidad": ["JAVA", "NETCORE"],
+        "rol": "Trainer"
+    },
+    {
+        "id":4,
+        "nombre": "Cristian",
+        "hora_inicio": 10,
+        "hora_fin": 18,
+        "especialidad": ["JAVA", "NodeJS"],
+        "rol": "Trainer"
+    },
+    {
+        "id":5,
+        "nombre": "Kevin David",
+        "hora_inicio": 6,
+        "hora_fin": 14,
+        "especialidad": ["JAVA"],
+        "rol": "Trainer"
+    },
+    {
+        "id":6,
+        "nombre": "Carlos Rueda",
+        "hora_inicio": 14, 
+        "hora_fin": 22,
+        "especialidad": ["JAVA"],
+        "rol": "Trainer"
+    }
+]
