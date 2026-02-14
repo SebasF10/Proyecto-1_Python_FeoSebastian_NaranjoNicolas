@@ -20,12 +20,22 @@ def registrarse():
         telefono = input("Ingrese su teléfono: ")
         direccion = input("Ingrese su dirección: ")
         grupo = None
-        
+        jornada = string = ""
+        horario = int(input("Ingrese su jornada (1. mañana/2. tarde): "))
+        if horario == 1:
+            jornada = "mañana"
+        elif horario == 2:
+            jornada = "tarde"
+
         if len(campers) == 0:
             nuevo_id = 1
         else:
             ultimo_id = campers[-1]["idCamper"]
             nuevo_id = ultimo_id + 1
+
+        fecha = None
+        nota = None
+        resultado = None
 
         
         # Crear nuevo camper
@@ -40,8 +50,13 @@ def registrarse():
             "telefono": telefono,
             "direccion": direccion,
             "estado": "Proceso de inscripción",
+            "jornada": jornada,
             "riesgo": None,
-            "grupo": grupo
+            "grupo": grupo,
+            "fecha": fecha,
+            "nota": nota,
+            "resultado": resultado
+
         }
         campers.append(nuevo_camper)
         

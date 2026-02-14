@@ -1,0 +1,14 @@
+[
+  {
+    "nombre": "Sputnik",
+    "capacidad": 35
+  },
+  {
+    "nombre": "Artemis",
+    "capacidad": 35
+  },
+  {
+    "nombre": "Apolo",
+    "capacidad": 35
+  }
+]
