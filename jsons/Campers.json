@@ -9,7 +9,7 @@
     "contraseña": "12345",
     "telefono": "3004567890",
     "direccion": "Calle 25 #14-67",
-    "estado": "Inscrito",
+    "estado": "Proceso de ingreso",
     "riesgo": null,
     "grupo": null
   },
@@ -23,7 +23,7 @@
     "contraseña": "12345",
     "telefono": "304343422323",
     "direccion": "calle 1",
-    "estado": "Proceso de inscripción",
+    "estado": "Proceso de ingreso",
     "riesgo": null,
     "grupo": null
   }
