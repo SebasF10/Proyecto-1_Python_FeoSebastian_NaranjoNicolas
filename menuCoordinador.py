@@ -1,6 +1,15 @@
 import json
 from crearGrupos import crearGrupos
 
+def cargar_grupos():
+    with open("jsons/grupos.json", "r", encoding="utf-8") as archivo:
+        grupos = json.load(archivo)
+    return grupos
+
+def guardar_grupos(grupos):
+    with open("jsons/grupos.json", "w", encoding="utf-8") as archivo:
+        json.dump(grupos, archivo, indent=4, ensure_ascii=False)
+
 def cargar_campers():
     try:
         with open("jsons/Campers.json", "r", encoding="utf-8") as archivo:
@@ -70,9 +79,31 @@ def menuCoordinador():
                     print(camper["idCamper"], camper["nombre"])
                     print("fecha:", camper["evaluacionIngreso"]["fecha"])
 
+            id_buscar=int(input("ingrese el id del esrudiante:"))
+            for camper in campers:
+                if camper["idCamper"] == id_buscar:
+
+                    nota=int(input("ingresa la puntuacion que obtuvo el estudiante (0-100)"))
+
+                    camper["evaluacion de ingreso"]["nota"]=nota
+
+                    if nota >40:
+                        print("El estudiante aprobo la prueba")
+                        camper["evaluacion de ingreso"]["resultado"]="aprobado"
+                        camper["estado"] = "aprobado"
+                    else:
+                        print("El estudiante reprobo la prueba")
+                        print("El estudiante tendra que volver a presentarla")
+                        camper["evalucion de ingreso"]["resultado"]="reprobado"
+
+
+
 
         elif opcion == "3":
             print("Asignar grupos a activos")
+
+            grupos = cargar_grupos()
+
             aprobados = [i for i in campers if i.get("estado") == "aprobado"]
             if not aprobados:
                 print("No hay campers aprobados.")
@@ -80,43 +111,65 @@ def menuCoordinador():
 
             for i in aprobados:
                 print(i.get("idCamper"), i.get("nombre"), "grupo:", i.get("grupo"))
+            if not grupos:
+                print("No hay grupos creados.")
+                continue
 
+            print("Grupos disponibles:")
+            for g in grupos:
+                print(g.get("idGrupo"), "-", g.get("ruta"), "-", g.get("estado"))
             try:
-                id_buscar = int(input("ingrese el Id del camper: "))
+                id_buscar = int(input("ingrese el Id del camper: ").strip())
             except ValueError:
                 print("ID inválido")
                 continue
 
-            grupo = input("ingrese el grupo: ")
+            grupo = input("ingrese el grupo: ").strip()
+            if grupo == "":
+                print("grupo invalido (vacio)")
+                continue
 
-            found = False
-            for camper in campers:
-                if camper.get("idCamper") == id_buscar and camper.get("estado") == "aprobado":
-                    camper["grupo"] = grupo
-                    print("Grupo asignado correctamente")
-                    found = True
+            grupo_encontrado = None
+            for i in grupos:
+                if i.get("idGrupo") == grupo:
+                    grupo_encontrado = i
                     break
 
-            if not found:
-                print("No se encontró un camper aprobado con ese ID")
+            if grupo_encontrado is None:
+                print("no existe ese grupo con ese id")
+                continue
+
+            # buscar camper por id
+            camper_encontrado = None
+            for camper in campers:
+                if camper.get("idCamper") == id_buscar:
+                    camper_encontrado = camper
+                    break
+
+            if camper_encontrado is None:
+                print("camper no encontrado")
+                continue
+
+            if camper_encontrado.get("estado") != "aprobado":
+                print("el id existe, pero el camper no esta aprobado")
+                continue
+
+            # asignar grupo y agregar al grupo si no está ya
+            camper_encontrado["grupo"] = grupo_encontrado.get("idGrupo")
+            if "campers" not in grupo_encontrado or grupo_encontrado["campers"] is None:
+                grupo_encontrado["campers"] = []
+
+            existe_grupo = any(c.get("idCamper") == camper_encontrado.get("idCamper") for c in grupo_encontrado["campers"])
+            if not existe_grupo:
+                grupo_encontrado["campers"].append({
+                    "idCamper": camper_encontrado.get("idCamper"),
+                    "nombre": camper_encontrado.get("nombre")
+                })
 
             guardar_campers(campers)
+            guardar_grupos(grupos)
+            print("grupo asignado correctamente")
 
-        elif opcion =="4":
-            print("editar estado del camper")
-            
-
-
-        elif opcion == "9":
-            crearGrupos()
-
-        elif opcion == "10":
-            print("Saliendo...")
-            break
-
-        else:
-            print("Opción no válida.")
+        
 
 
-if __name__ == "__main__":
-    menuCoordinador()

@@ -30,14 +30,14 @@
         "contraseña": "12345",
         "telefono": "304343422323",
         "direccion": "calle 1",
-        "estado": "inscrito",
+        "estado": "aprobado",
         "jornada": "Mañana",
         "riesgo": null,
-        "grupo": null,
+        "grupo": "P2",
         "evaluacionIngreso": {
             "fecha": "15 enero",
-            "nota": null,
-            "resultado": null,
+            "nota": 60,
+            "resultado": "aprobado",
             "jornada": "mañana"
         }
     },
