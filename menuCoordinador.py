@@ -139,7 +139,6 @@ def menuCoordinador():
                 print("no existe ese grupo con ese id")
                 continue
 
-            # buscar camper por id
             camper_encontrado = None
             for camper in campers:
                 if camper.get("idCamper") == id_buscar:
@@ -153,22 +152,32 @@ def menuCoordinador():
             if camper_encontrado.get("estado") != "aprobado":
                 print("el id existe, pero el camper no esta aprobado")
                 continue
+                
 
-            # asignar grupo y agregar al grupo si no está ya
+            # asignar grupo
             camper_encontrado["grupo"] = grupo_encontrado.get("idGrupo")
-            if "campers" not in grupo_encontrado or grupo_encontrado["campers"] is None:
-                grupo_encontrado["campers"] = []
-
-            existe_grupo = any(c.get("idCamper") == camper_encontrado.get("idCamper") for c in grupo_encontrado["campers"])
-            if not existe_grupo:
-                grupo_encontrado["campers"].append({
-                    "idCamper": camper_encontrado.get("idCamper"),
-                    "nombre": camper_encontrado.get("nombre")
-                })
 
             guardar_campers(campers)
             guardar_grupos(grupos)
             print("grupo asignado correctamente")
+
+        elif opcion == "8":
+            print("-----------------------------------")
+            print("1. ")
+            print("2. ")
+            print("3. ")
+            print("4. ")
+            print("-----------------------------------")
+            opcion_reportes = input("Ingrese el numero de la opcion que desea: ")
+
+        elif opcion == "9":
+            print("------------------------------------")
+            crearGrupos()
+        
+        elif opcion == "10":
+            print("Saliendo del programa...")
+            break
+
 
         
 

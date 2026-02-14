@@ -1,63 +1,70 @@
 [
-    {
-        "idGrupo": "P2",
-        "trainer_id": 2,
-        "ruta": "JAVA",
-        "salon": "Sputnik",
-        "hora_inicio": 10,
-        "hora_fin": 14,
-        "estado": "Planeado",
-        "campers": [
-            {
-                "idCamper": 2,
-                "nombre": "sebas"
-            }
-        ],
-        "modulos": [
-            {
-                "nombre": "Fundamentos",
-                "notas": {}
-            },
-            {
-                "nombre": "Web",
-                "notas": {}
-            },
-            {
-                "nombre": "Bases de Datos",
-                "notas": {}
-            },
-            {
-                "nombre": "Backend Java",
-                "notas": {}
-            }
-        ]
-    },
-    {
-        "idGrupo": "E2",
-        "trainer_id": 1,
-        "ruta": "JAVA",
-        "salon": "Apolo",
-        "hora_inicio": 10,
-        "hora_fin": 14,
-        "estado": "Planeado",
-        "campers": [],
-        "modulos": [
-            {
-                "nombre": "Fundamentos",
-                "notas": {}
-            },
-            {
-                "nombre": "Web",
-                "notas": {}
-            },
-            {
-                "nombre": "Bases de Datos",
-                "notas": {}
-            },
-            {
-                "nombre": "Backend Java",
-                "notas": {}
-            }
-        ]
-    }
+  {
+    "idGrupo": "P2",
+    "trainer_id": 2,
+    "ruta": "JAVA",
+    "salon": "Sputnik",
+    "hora_inicio": 10,
+    "hora_fin": 14,
+    "estado": "Planeado",
+    "campers": [
+      {
+        "idCamper": 2,
+        "nombre": "sebas"
+      }
+    ],
+    "modulos": [
+      {
+        "nombre": "Fundamentos",
+        "notas": {
+          "2": {
+            "actividad": 60.0,
+            "practica": 50.0,
+            "teorica": 10.0,
+            "definitiva": 41.0
+          }
+        }
+      },
+      {
+        "nombre": "Web",
+        "notas": {}
+      },
+      {
+        "nombre": "Bases de Datos",
+        "notas": {}
+      },
+      {
+        "nombre": "Backend Java",
+        "notas": {}
+      }
+    ]
+  },
+  {
+    "idGrupo": "E2",
+    "trainer_id": 1,
+    "ruta": "JAVA",
+    "salon": "Apolo",
+    "hora_inicio": 10,
+    "hora_fin": 14,
+    "estado": "Planeado",
+    "campers": [],
+    "modulos": [
+      {
+        "nombre": "Fundamentos",
+        "notas": {}
+      },
+      {
+        "nombre": "Web",
+        "notas": {}
+      },
+      {
+        "nombre": "Bases de Datos",
+        "notas": {}
+      },
+      {
+        "nombre": "Backend Java",
+        "notas": {}
+      }
+    ]
+  }
 ]

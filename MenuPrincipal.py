@@ -2,6 +2,8 @@ import json
 import os
 from menuCoordinador import menuCoordinador
 from registrarse import registrarse
+from menuTrainer import menuTrainer
+from menuCamper import menuCamper   
 
 print("Biendvenido a la plataforma de Campuslands")
 print("Que desea hacer?")
@@ -27,6 +29,7 @@ if opcion == "1":
                 if camper["gmail"] == gmail and camper["contraseña"] == contraseña:
                     print("Bienvenido " + camper["nombre"])
                     usuario_encontrado = True
+                    menuCamper()
                     break
             if not usuario_encontrado:
                 print("Correo o contraseña incorrectos")
@@ -41,6 +44,7 @@ if opcion == "1":
                 if trainer["gmail"] == gmail and trainer["contraseña"] == contraseña:
                     print("Bienvenido " + trainer["nombre"])
                     usuario_encontrado = True
+                    menuTrainer(trainer)
                     break
             if not usuario_encontrado:
                 print("Correo o contraseña incorrectos")
