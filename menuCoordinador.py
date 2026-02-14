@@ -36,8 +36,8 @@ def menuCoordinador():
         if opcion == "1":
             print("Agendar estudiantes a evaluacion de ingreso")
             for camper in campers:
-                estado = camper.get("estado", "").lower()
-                if estado in ["proceso de ingreso", "proceso de inscripcion", "proceso de inscripción"]:
+                estado = camper.get("estado")
+                if estado in ["proceso de ingreso"]:
                     print(camper.get("idCamper"), camper.get("nombre"), camper.get("estado"))
 
             try:
@@ -55,7 +55,7 @@ def menuCoordinador():
                         camper["evaluacionIngreso"] = {"fecha": None, "nota": None, "resultado": None, "jornada": None}
                     camper["evaluacionIngreso"]["fecha"] = fecha
                     camper["evaluacionIngreso"]["jornada"] = jornada
-                    camper["estado"] = "Agendada para evaluacion"
+                    camper["estado"] = "inscrito"
                     print("evaluacion agendada correctamente")
                     found = True
                     break
@@ -65,21 +65,40 @@ def menuCoordinador():
         
         elif opcion == "2":
             print("estudiantes para evaluacion")
-            if camper["estado"]== "proceso de ingreso" or camper["Estado"]== "proceso de inscripcion":
-                print(camper["Idcamper"], camper["Nombre"])
-                print("fecha:", camper["nombre"])
-
-        elif opcion =="3":
-            print("asignar grupos a activos")
-            if camper ["Estado"]== "activo":
-                print(camper["Idcamper"],camper["Nombre"],"grupo:", camper["Grupo"])
-                id_buscar= int(input("ingrese el Id del camper:"))
-                grupo= input("ingrese el grupo")
-
             for camper in campers:
-                if camper["idCamper"] == id_buscar and camper["estado"] == "Activo":
+                if camper["estado"] == "inscrito":
+                    print(camper["idCamper"], camper["nombre"])
+                    print("fecha:", camper["evaluacionIngreso"]["fecha"])
+
+
+        elif opcion == "3":
+            print("Asignar grupos a activos")
+            aprobados = [i for i in campers if i.get("estado") == "aprobado"]
+            if not aprobados:
+                print("No hay campers aprobados.")
+                continue
+
+            for i in aprobados:
+                print(i.get("idCamper"), i.get("nombre"), "grupo:", i.get("grupo"))
+
+            try:
+                id_buscar = int(input("ingrese el Id del camper: "))
+            except ValueError:
+                print("ID inválido")
+                continue
+
+            grupo = input("ingrese el grupo: ")
+
+            found = False
+            for camper in campers:
+                if camper.get("idCamper") == id_buscar and camper.get("estado") == "aprobado":
                     camper["grupo"] = grupo
                     print("Grupo asignado correctamente")
+                    found = True
+                    break
+
+            if not found:
+                print("No se encontró un camper aprobado con ese ID")
 
             guardar_campers(campers)
 

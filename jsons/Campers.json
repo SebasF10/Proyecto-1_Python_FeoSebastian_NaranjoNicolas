@@ -9,7 +9,7 @@
         "contraseña": "12345",
         "telefono": "3004567890",
         "direccion": "Calle 25 #14-67",
-        "estado": "Agendada para evaluacion",
+        "estado": "proceso de ingreso",
         "jornada": "Mañana",
         "riesgo": null,
         "grupo": null,
@@ -30,14 +30,15 @@
         "contraseña": "12345",
         "telefono": "304343422323",
         "direccion": "calle 1",
-        "estado": "Proceso de ingreso",
+        "estado": "inscrito",
         "jornada": "Mañana",
         "riesgo": null,
         "grupo": null,
         "evaluacionIngreso": {
-            "fecha": null,
+            "fecha": "15 enero",
             "nota": null,
-            "resultado": null
+            "resultado": null,
+            "jornada": "mañana"
         }
     },
     {
@@ -50,14 +51,15 @@
         "contraseña": "4",
         "telefono": "4",
         "direccion": "3",
-        "estado": "Proceso de inscripción",
+        "estado": "inscrito",
         "jornada": "Mañana",
         "riesgo": null,
         "grupo": null,
         "evaluacionIngreso": {
-            "fecha": null,
+            "fecha": "20 marzo",
             "nota": null,
-            "resultado": null
+            "resultado": null,
+            "jornada": "tarde"
         }
     }
 ]
