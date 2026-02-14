@@ -62,6 +62,31 @@ def menuCoordinador():
             if not found:
                 print("camper no encontrado")
             guardar_campers(campers)
+        
+        elif opcion == "2":
+            print("estudiantes para evaluacion")
+            if camper["estado"]== "proceso de ingreso" or camper["Estado"]== "proceso de inscripcion":
+                print(camper["Idcamper"], camper["Nombre"])
+                print("fecha:", camper["nombre"])
+
+        elif opcion =="3":
+            print("asignar grupos a activos")
+            if camper ["Estado"]== "activo":
+                print(camper["Idcamper"],camper["Nombre"],"grupo:", camper["Grupo"])
+                id_buscar= int(input("ingrese el Id del camper:"))
+                grupo= input("ingrese el grupo")
+
+            for camper in campers:
+                if camper["idCamper"] == id_buscar and camper["estado"] == "Activo":
+                    camper["grupo"] = grupo
+                    print("Grupo asignado correctamente")
+
+            guardar_campers(campers)
+
+        elif opcion =="4":
+            print("editar estado del camper")
+            
+
 
         elif opcion == "9":
             crearGrupos()
