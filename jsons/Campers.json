@@ -26,5 +26,19 @@
     "estado": "Proceso de ingreso",
     "riesgo": null,
     "grupo": null
+  },
+  {
+    "idCamper": 3,
+    "rol": "camper",
+    "nombre": "e",
+    "apellido": "g",
+    "acudiente": "f",
+    "gmail": "s@gmail.com",
+    "contraseña": "4",
+    "telefono": "4",
+    "direccion": "3",
+    "estado": "Proceso de inscripción",
+    "riesgo": null,
+    "grupo": null
   }
 ]
