@@ -87,8 +87,8 @@ def crearGrupos():
     salon = salones[salon_op-1]["nombre"]
 
     for g in grupos:
-        if g["salon"] == salon and g["hora_inicio"] == hora_inicio:
-            print(" Ese salon ya esta ocupado en ese horario.")
+        if g.get("idGrupo") == nombre_grupo:
+            print("Ya existe un grupo con ese id:", nombre_grupo)
             return
 
     modulos = [

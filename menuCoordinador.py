@@ -168,7 +168,7 @@ def menuCoordinador():
             print("Editar estado de estudiantes activos")
             hay_activos = False
             for camper in campers:
-                if camper["estado"] == "cursando ":
+                if camper["estado"] == "cursando":
                     print(camper["idCamper"], camper["nombre"], "estado:", camper["estado"])
                     hay_activos = True
             if not hay_activos:
@@ -187,7 +187,7 @@ def menuCoordinador():
                         for camper in campers:
                             if camper.get("idCamper") == id_buscar:
                                 camper_encontrado = camper
-                            break
+                                break
                     if camper_encontrado is None:
                         print("camper no encontrado")
                     else:
@@ -228,14 +228,99 @@ def menuCoordinador():
                         json.dump(trainers, file, indent=4, ensure_ascii=False)
                     print("especialidad agregada correctamente al trainer.")
 
+        elif opcion == "7":
+            print("Lista de calificaciones de los cursos")
+            with open("jsons/Grupos.json", "r", encoding="utf-8") as file:
+                grupos = json.load(file)
+
+            for grupo in grupos:
+                print("-----------------------------------")
+                print(grupo.get("idGrupo"), grupo.get("ruta"))
+
+                hay_calificaciones = False
+
+                for modulo in grupo.get("modulos", []):
+                    for ev in modulo.get("evaluaciones", []):
+                        hay_calificaciones = True
+                        print("Módulo:", modulo.get("nombre"))
+                        print("  Camper ID:", ev.get("idCamper"),
+                            "| Definitiva:", ev.get("definitiva"),
+                            "| Estado:", ev.get("estado"),
+                            "| Riesgo:", ev.get("riesgo"))
+
+                if not hay_calificaciones:
+                    print("No hay calificaciones registradas para este grupo.")
         elif opcion == "8":
             print("-----------------------------------")
-            print("1. ")
-            print("2. ")
-            print("3. ")
-            print("4. ")
+            print("1. campers y trainers que se encuentren asociados a una ruta")
+            print("2.Mostrar cuantos campers perdieron y aprobaron cada uno de los módulos teniendo en cuenta la ruta de entrenamiento y el entrenador encargado ")
+            print("3.ver lo estudiantes en alto riesgo puntaje en modulo < 60 ")
+            print("4. un llamado de atencion al estudiante por su puntaje en ese modulo ")
             print("-----------------------------------")
             opcion_reportes = input("Ingrese el numero de la opcion que desea: ")
+
+            if opcion_reportes == "1":
+                with open("jsons/Grupos.json", "r", encoding="utf-8") as file:
+                    grupos = json.load(file)
+                with open("jsons/Trainers.json", "r", encoding="utf-8") as file:
+                    trainers = json.load(file)
+            
+                for grupo in grupos:
+                    print("-----------------------------------")
+                    print("Grupo ID:", grupo.get("idGrupo"))
+                    print("Ruta:", grupo.get("ruta"))
+                    trainer_nombre = "No asignado"
+                    for trainer in trainers:
+                        if trainer["id"] == grupo.get("trainer_id"):
+                            trainer_nombre = trainer["nombre"]
+                            break
+
+                    print("Trainer:", trainer_nombre)
+
+                    print("Campers asociados:")
+                    for camper in grupo.get("campers", []):
+                        print(f"  - {camper['nombre']} (ID: {camper['idCamper']})")
+
+            elif opcion_reportes == "2":
+                with open("jsons/Grupos.json", "r", encoding="utf-8") as file:
+                    grupos = json.load(file)
+                for grupo in grupos:
+                    print("-----------------------------------")
+                    print("Grupo ID:", grupo.get("idGrupo"))
+                    print("Ruta:", grupo.get("ruta"))
+                    aprobados = 0
+                    reprobados = 0
+                    for modulo in grupo.get("modulos", []):
+                        for ev in modulo.get("evaluaciones", []):
+                            if ev.get("definitiva", 0) >= 60:
+                                aprobados += 1
+                            else:
+                                reprobados += 1
+                    print(f"Aprobados: {aprobados} | Reprobados: {reprobados}")
+
+            elif opcion_reportes == "3":
+                with open("jsons/Grupos.json", "r", encoding="utf-8") as file:
+                    grupos = json.load(file)
+                print("Estudiantes en alto riesgo (definitiva < 60):")
+                for grupo in grupos:
+                    for modulo in grupo.get("modulos", []):
+                        for ev in modulo.get("evaluaciones", []):
+                            if ev.get("definitiva", 0) < 60:
+                                print(f"Camper ID: {ev.get('idCamper')} | Módulo: {modulo.get('nombre')} | Definitiva: {ev.get('definitiva')}")
+           
+            elif opcion_reportes == "4":
+                with open("jsons/Grupos.json", "r", encoding="utf-8") as file:
+                    grupos = json.load(file)
+                print("Llamados de atención para estudiantes con puntaje en módulo < 60:")
+                for grupo in grupos:
+                    for modulo in grupo.get("modulos", []):
+                        for ev in modulo.get("evaluaciones", []):
+                            if ev.get("definitiva", 0) < 60:
+                                print(f"Camper ID: {ev.get('idCamper')} | Módulo: {modulo.get('nombre')} | Definitiva: {ev.get('definitiva')}")
+                                print("Llamado de atención: Se recomienda al estudiante mejorar su desempeño en este módulo para evitar riesgos académicos.")
+            
+            
+            
 
         elif opcion == "9":
             print("------------------------------------")

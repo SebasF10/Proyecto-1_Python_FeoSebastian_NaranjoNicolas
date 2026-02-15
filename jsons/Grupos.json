@@ -25,6 +25,15 @@
             "definitiva": 67.0,
             "riesgo": "MEDIO",
             "estado": "APROBADO"
+          },
+          {
+            "idCamper": 2,
+            "actividad": 10.0,
+            "practica": 5.0,
+            "teorica": 20.0,
+            "definitiva": 10.0,
+            "riesgo": "ALTO",
+            "estado": "DESAPROBADO"
           }
         ]
       },

@@ -1,4 +1,9 @@
 import json
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+RUTA_COORDINADORES = os.path.join(BASE_DIR, "jsons", "Coordinadores.json")
+
 from menuCoordinador import menuCoordinador
 from registrarse import registrarse
 from menuTrainer import menuTrainer
@@ -60,6 +65,7 @@ while True:
             with open("jsons/Coordinadores.json", "r", encoding="utf-8") as file:
                 coordinadores = json.load(file)
                 usuario_encontrado = False
+                
                 for coordinador in coordinadores:
                     if coordinador["gmail"] == gmail and coordinador["contraseña"] == contraseña:
                         print("Bienvenido " + coordinador["nombre"])
