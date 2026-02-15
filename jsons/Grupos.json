@@ -16,26 +16,29 @@
     "modulos": [
       {
         "nombre": "Fundamentos",
-        "notas": {
-          "2": {
-            "actividad": 60.0,
-            "practica": 50.0,
-            "teorica": 10.0,
-            "definitiva": 41.0
+        "evaluaciones": [
+          {
+            "idCamper": 2,
+            "actividad": 70.0,
+            "practica": 60.0,
+            "teorica": 80.0,
+            "definitiva": 67.0,
+            "riesgo": "MEDIO",
+            "estado": "APROBADO"
           }
-        }
+        ]
       },
       {
         "nombre": "Web",
-        "notas": {}
+        "evaluaciones": []
       },
       {
         "nombre": "Bases de Datos",
-        "notas": {}
+        "evaluaciones": []
       },
       {
         "nombre": "Backend Java",
-        "notas": {}
+        "evaluaciones": []
       }
     ]
   },
@@ -51,19 +54,47 @@
     "modulos": [
       {
         "nombre": "Fundamentos",
-        "notas": {}
+        "evaluaciones": []
       },
       {
         "nombre": "Web",
-        "notas": {}
+        "evaluaciones": []
       },
       {
         "nombre": "Bases de Datos",
-        "notas": {}
+        "evaluaciones": []
       },
       {
         "nombre": "Backend Java",
-        "notas": {}
+        "evaluaciones": []
+      }
+    ]
+  },
+  {
+    "idGrupo": "C1",
+    "trainer_id": 6,
+    "ruta": "JAVA",
+    "salon": "Apolo",
+    "hora_inicio": 14,
+    "hora_fin": 18,
+    "estado": "Planeado",
+    "campers": [],
+    "modulos": [
+      {
+        "nombre": "Fundamentos",
+        "evaluaciones": []
+      },
+      {
+        "nombre": "Web",
+        "evaluaciones": []
+      },
+      {
+        "nombre": "Bases de Datos",
+        "evaluaciones": []
+      },
+      {
+        "nombre": "Backend Java",
+        "evaluaciones": []
       }
     ]
   }

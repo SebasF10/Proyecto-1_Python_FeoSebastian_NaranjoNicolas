@@ -82,17 +82,17 @@ def crearGrupos():
             return
 
     modulos = [
-        {"nombre": "Fundamentos", "notas": {}},
-        {"nombre": "Web", "notas": {}},
-        {"nombre": "Bases de Datos", "notas": {}}
+    {"nombre": "Fundamentos", "evaluaciones": []},
+    {"nombre": "Web", "evaluaciones": []},
+    {"nombre": "Bases de Datos", "evaluaciones": []}
     ]
 
     if ruta.upper() == "JAVA":
-        modulos.append({"nombre": "Backend Java", "notas": {}})
+        modulos.append({"nombre": "Backend Java", "evaluaciones": []})
     elif ruta.upper() == "NODEJS":
-        modulos.append({"nombre": "Backend NodeJS", "notas": {}})
+        modulos.append({"nombre": "Backend NodeJs", "evaluaciones": []})
     elif ruta.upper() == "NETCORE":
-        modulos.append({"nombre": "Backend NetCore", "notas": {}})
+        modulos.append({"nombre": "Backend NetCore", "evaluaciones": []})
 
     nuevo_grupo = {
         "idGrupo": nombre_grupo,

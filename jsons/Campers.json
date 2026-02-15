@@ -36,7 +36,7 @@
         "grupo": "P2",
         "evaluacionIngreso": {
             "fecha": "15 enero",
-            "nota": 60,
+            "nota": null,
             "resultado": "aprobado",
             "jornada": "mañana"
         }
