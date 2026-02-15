@@ -55,6 +55,16 @@ def crearGrupos():
     hora_inicio = bloques[bloque_hora-1][0]
     hora_fin = bloques[bloque_hora-1][1]
 
+    for g in grupos:
+        if g.get("idGrupo") == nombre_grupo:
+            print("Ya existe un grupo con ese id:", nombre_grupo)
+            return
+
+    # validar especialidades
+    if "especialidad" not in trainer or not trainer["especialidad"]:
+        print("Este profesor no tiene especialidades registradas.")
+        return
+
     letra = trainer["nombre"][0].upper()
     nombre_grupo = letra + str(bloque_hora)
 
@@ -87,12 +97,8 @@ def crearGrupos():
     {"nombre": "Bases de Datos", "evaluaciones": []}
     ]
 
-    if ruta.upper() == "JAVA":
-        modulos.append({"nombre": "Backend Java", "evaluaciones": []})
-    elif ruta.upper() == "NODEJS":
-        modulos.append({"nombre": "Backend NodeJs", "evaluaciones": []})
-    elif ruta.upper() == "NETCORE":
-        modulos.append({"nombre": "Backend NetCore", "evaluaciones": []})
+    nombre_backend = f"Backend {ruta.strip().title()}"
+    modulos.append({"nombre": nombre_backend, "evaluaciones": []})
 
     nuevo_grupo = {
         "idGrupo": nombre_grupo,

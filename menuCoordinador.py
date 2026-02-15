@@ -85,16 +85,16 @@ def menuCoordinador():
 
                     nota=int(input("ingresa la puntuacion que obtuvo el estudiante (0-100)"))
 
-                    camper["evaluacion de ingreso"]["nota"]=nota
+                    camper["evaluacionIngreso"]["nota"]=nota
 
                     if nota >40:
                         print("El estudiante aprobo la prueba")
-                        camper["evaluacion de ingreso"]["resultado"]="aprobado"
+                        camper["evaluacionIngreso"]["resultado"]="aprobado"
                         camper["estado"] = "aprobado"
                     else:
                         print("El estudiante reprobo la prueba")
                         print("El estudiante tendra que volver a presentarla")
-                        camper["evalucion de ingreso"]["resultado"]="reprobado"
+                        camper["evaluacionIngreso"]["resultado"]="reprobado"
 
 
 
@@ -156,10 +156,77 @@ def menuCoordinador():
 
             # asignar grupo
             camper_encontrado["grupo"] = grupo_encontrado.get("idGrupo")
+           
+            camper_encontrado["estado"] = "cursando"
 
             guardar_campers(campers)
             guardar_grupos(grupos)
             print("grupo asignado correctamente")
+
+
+        elif opcion == "4":
+            print("Editar estado de estudiantes activos")
+            hay_activos = False
+            for camper in campers:
+                if camper["estado"] == "cursando ":
+                    print(camper["idCamper"], camper["nombre"], "estado:", camper["estado"])
+                    hay_activos = True
+            if not hay_activos:
+                print("No hay campers activos.")
+            else:
+                    try:
+                        id_buscar = int(input("ingrese el Id del camper: ").strip())
+                    except ValueError:
+                        print("id invalido")
+                        continue
+                    nuevo_estado = input("ingrese el nuevo estado: ").strip()
+                    if nuevo_estado == "":
+                        print("estado invalido (vacio)")
+                    else:
+                        camper_encontrado = None
+                        for camper in campers:
+                            if camper.get("idCamper") == id_buscar:
+                                camper_encontrado = camper
+                            break
+                    if camper_encontrado is None:
+                        print("camper no encontrado")
+                    else:
+                        camper_encontrado["estado"] = nuevo_estado
+                        guardar_campers(campers)
+                        print("estado actualizado correctamente")
+
+        elif opcion == "5":
+            print("resultados de examenes de ingreso")
+            for camper in campers:
+                if camper.get("evaluacionIngreso"):
+                    print(camper["idCamper"], camper["nombre"])
+                    print("fecha:", camper["evaluacionIngreso"]["fecha"])
+                    print("nota:", camper["evaluacionIngreso"]["nota"])
+                    print("resultado:", camper["evaluacionIngreso"]["resultado"])
+                    print("-----------------------------------")
+                    
+        elif opcion == "6":
+            print("agregar especialidad nueva a trainer")
+            with open("jsons/Trainers.json", "r", encoding="utf-8") as file:
+                trainers = json.load(file)
+                for trainer in trainers:
+                    print(trainer["id"], trainer["nombre"])
+                id_trainer = input("Ingrese el ID del trainer al que desea agregar la especialidad: ")
+                trainer_encontrado = None
+                for trainer in trainers:
+                    if str(trainer["id"]) == id_trainer:
+                        trainer_encontrado = trainer
+                        break
+                if trainer_encontrado is None:
+                    print("Trainer no encontrado.")
+                else:
+                    nueva_ruta = input("Ingrese el nombre de la nueva especialidad: ")
+                    if "especialidad" not in trainer_encontrado:
+                        trainer_encontrado["especialidad"] = []
+                    trainer_encontrado["especialidad"].append(nueva_ruta)
+                    with open("jsons/Trainers.json", "w", encoding="utf-8") as file:
+                        json.dump(trainers, file, indent=4, ensure_ascii=False)
+                    print("especialidad agregada correctamente al trainer.")
 
         elif opcion == "8":
             print("-----------------------------------")

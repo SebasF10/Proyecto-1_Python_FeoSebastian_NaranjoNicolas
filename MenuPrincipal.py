@@ -1,5 +1,4 @@
 import json
-import os
 from menuCoordinador import menuCoordinador
 from registrarse import registrarse
 from menuTrainer import menuTrainer
@@ -7,19 +6,23 @@ from menuCamper import menuCamper
 
 while True:
     print("Biendvenido a la plataforma de Campuslands")
+    print("-------------------------------------------------")
     print("Que desea hacer?")
     print("1. Iniciar sesion")
     print("2. Registrarse como camper")
     print("3. Salir")
     opcion = input("Ingrese el numero de la opcion que desea: ")
+    print("-------------------------------------------------")
 
     if opcion == "1":
+        print("--------------------------------------------------------")
         print("Como quieres iniciar sesion?")
         print("1. Como camper")
         print("2. Como Trainer")
         print("3. Como Coordinador")
-        opcion2 = input("Ingrese el numero de la opcion que desea: ")
         print("--------------------------------------------------------")
+        opcion2 = input("Ingrese el numero de la opcion que desea: ")
+       
 
         if opcion2 == "1":
             gmail = input("Ingrese su correo electronico: ")
@@ -31,7 +34,7 @@ while True:
                     if camper["gmail"] == gmail and camper["contraseña"] == contraseña:
                         print("Bienvenido " + camper["nombre"])
                         usuario_encontrado = True
-                        menuCamper()
+                        menuCamper(camper)
                         
                 if not usuario_encontrado:
                     print("Correo o contraseña incorrectos")

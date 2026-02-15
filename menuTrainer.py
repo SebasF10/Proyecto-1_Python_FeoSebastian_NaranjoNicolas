@@ -28,8 +28,7 @@ def menuTrainer(trainer):
         print("Que es lo que quieres hacer?")
         print("1. Ver grupos asignados y sus campers")
         print("2. Calificar modulos")
-        print("3. Ver promedios de los modulos")
-        print("4. Salir")
+        print("3. Salir")
         print("-----------------------------------------------")
         opcion = input("Ingrese el numero de la opcion que desea: ")
 
@@ -161,11 +160,7 @@ def menuTrainer(trainer):
                                 json.dump(grupos, file, indent=2, ensure_ascii=False)
 
                             print("Notas guardadas correctamente.")
-                    
         elif opcion == "3":
-            print("-------- Ver promedios de los modulos --------")
-        
-        elif opcion == "4":
             print("Saliendo del menu trainer...")
             break
         
