@@ -6,6 +6,9 @@
     "salon": "Sputnik",
     "hora_inicio": 10,
     "hora_fin": 14,
+    "jornada": "Mañana",
+    "fecha_inicio": "2025-07-01",
+    "fecha_fin": "2025-12-31",
     "estado": "Planeado",
     "campers": [
       {
@@ -47,7 +50,17 @@
       },
       {
         "nombre": "Backend Java",
-        "evaluaciones": []
+        "evaluaciones": [
+          {
+            "idCamper": 2,
+            "actividad": 50.0,
+            "practica": 80.0,
+            "teorica": 40.0,
+            "definitiva": 65.0,
+            "riesgo": "MEDIO",
+            "estado": "APROBADO"
+          }
+        ]
       }
     ]
   },
@@ -58,6 +71,9 @@
     "salon": "Apolo",
     "hora_inicio": 10,
     "hora_fin": 14,
+    "jornada": "Mañana",
+    "fecha_inicio": "2025-12-31",
+    "fecha_fin": "2026-07-01",
     "estado": "Planeado",
     "campers": [],
     "modulos": [
@@ -86,6 +102,9 @@
     "salon": "Apolo",
     "hora_inicio": 14,
     "hora_fin": 18,
+    "jornada": "Tarde",
+    "fecha_inicio": "2026-1-15",
+    "fecha_fin": "2026-10-15",
     "estado": "Planeado",
     "campers": [],
     "modulos": [

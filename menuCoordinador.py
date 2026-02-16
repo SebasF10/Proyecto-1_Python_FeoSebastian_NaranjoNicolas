@@ -252,10 +252,10 @@ def menuCoordinador():
                     print("No hay calificaciones registradas para este grupo.")
         elif opcion == "8":
             print("-----------------------------------")
-            print("1. campers y trainers que se encuentren asociados a una ruta")
+            print("1.campers y trainers que se encuentren asociados a una ruta")
             print("2.Mostrar cuantos campers perdieron y aprobaron cada uno de los módulos teniendo en cuenta la ruta de entrenamiento y el entrenador encargado ")
-            print("3.ver lo estudiantes en alto riesgo puntaje en modulo < 60 ")
-            print("4. un llamado de atencion al estudiante por su puntaje en ese modulo ")
+            print("3.ver los estudiantes en alto riesgo puntaje en modulo < 60 ")
+            print("4.un llamado de atencion al estudiante por su puntaje en ese modulo ")
             print("-----------------------------------")
             opcion_reportes = input("Ingrese el numero de la opcion que desea: ")
 

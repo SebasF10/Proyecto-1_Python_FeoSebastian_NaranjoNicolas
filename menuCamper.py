@@ -27,9 +27,10 @@ def menuCamper(camper_actual):
         print("-----------------------------------------------")
         print("Que es lo que quieres hacer?")
         print("1. Visualizar tus datos personales")
-        print("2. ver sus notas de cada modulo")
-        print("3. Revisar Estado")
-        print("4. Salir")
+        print("2. Ver datos del grupo al que perteneces")
+        print("3. ver sus notas de cada modulo")
+        print("4. Revisar Estado")
+        print("5. Salir")
         print("-----------------------------------------------")
         opcion = input("Ingrese el numero de la opcion que desea: ")
 
@@ -49,6 +50,28 @@ def menuCamper(camper_actual):
             print("-----------------------------------------------")
 
         elif opcion == "2":
+            grupos = cargar_grupos()
+            grupo_encontrado = False
+            for grupo in grupos:
+                if grupo["idGrupo"] == camper_actual["grupo"]:
+                    grupo_encontrado = True
+                    print("---Datos del grupo al que perteneces---")
+                    print("-----------------------------------------------")
+                    print(f"ID Grupo: {grupo['idGrupo']}")
+                    print(f"Ruta: {grupo['ruta']}")
+                    print(f"Salón: {grupo['salon']}")
+                    print(f"Hora inicio: {grupo['hora_inicio']}")
+                    print(f"Hora fin: {grupo['hora_fin']}")
+                    print(f"Jornada: {grupo['jornada']}")
+                    print(f"Fecha inicio: {grupo['fecha_inicio']}")
+                    print(f"Fecha fin: {grupo['fecha_fin']}")
+                    print("-----------------------------------------------")
+                    break
+            if not grupo_encontrado:
+                print("No tienes un grupo asignado aún.")
+                print("-----------------------------------------------")
+
+        elif opcion == "3":
             print("---Tus notas de los modulos---")
             grupos = cargar_grupos()
             grupo_encontrado = False
@@ -87,7 +110,7 @@ def menuCamper(camper_actual):
             
             print("-----------------------------------------------")
 
-        elif opcion == "3":
+        elif opcion == "4":
             print("---Estado actual de tus módulos---")
             grupos = cargar_grupos()
             grupo_encontrado = False
@@ -119,7 +142,7 @@ def menuCamper(camper_actual):
             
             print("-----------------------------------------------")
 
-        elif opcion == "4":
+        elif opcion == "5":
             print("Saliendo del menu camper...")
             break
 

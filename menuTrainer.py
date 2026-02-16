@@ -27,8 +27,9 @@ def menuTrainer(trainer):
         print("-----------------------------------------------")
         print("Que es lo que quieres hacer?")
         print("1. Ver grupos asignados y sus campers")
-        print("2. Calificar modulos")
-        print("3. Salir")
+        print("2. Visualizar datos del sus grupos")
+        print("3. Calificar modulos")
+        print("4. Salir")
         print("-----------------------------------------------")
         opcion = input("Ingrese el numero de la opcion que desea: ")
 
@@ -42,8 +43,6 @@ def menuTrainer(trainer):
                     print("-----------------------------------------------")
                     print(f"ID Grupo: {grupo['idGrupo']}")
                     print(f"Ruta: {grupo['ruta']}")
-                    print(f"Salon: {grupo['salon']}")
-                    print(f"Horario: {grupo['hora_inicio']} - {grupo['hora_fin']}")
                     print("------------------------------------------------")
                     print("Campers asignados:")
                     for camper in grupo["campers"]:
@@ -51,6 +50,26 @@ def menuTrainer(trainer):
                     print("-----------------------------------------------")
 
         elif opcion == "2":
+            for grupo in grupos:
+                if grupo["trainer_id"] == trainer["id"]:
+                    grupo_encontrado = True
+                    print("---Datos del grupo al que perteneces---")
+                    print("-----------------------------------------------")
+                    print(f"ID Grupo: {grupo['idGrupo']}")
+                    print(f"Ruta: {grupo['ruta']}")
+                    print(f"Salón: {grupo['salon']}")
+                    print(f"Hora inicio: {grupo['hora_inicio']}")
+                    print(f"Hora fin: {grupo['hora_fin']}")
+                    print(f"Jornada: {grupo['jornada']}")
+                    print(f"Fecha inicio: {grupo['fecha_inicio']}")
+                    print(f"Fecha fin: {grupo['fecha_fin']}")
+                    print("-----------------------------------------------")
+                    break
+            if not grupo_encontrado:
+                print("No tienes un grupo asignado aún.")
+                print("-----------------------------------------------")
+
+        elif opcion == "3":
 
             print("-------- Calificar los modulos --------")
 
@@ -160,7 +179,7 @@ def menuTrainer(trainer):
                                 json.dump(grupos, file, indent=2, ensure_ascii=False)
 
                             print("Notas guardadas correctamente.")
-        elif opcion == "3":
+        elif opcion == "4":
             print("Saliendo del menu trainer...")
             break
         

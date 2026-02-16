@@ -1,4 +1,7 @@
 import json
+from datetime import datetime, date
+import calendar
+
 
 def crearGrupos():
     print("----- CREAR GRUPO -----")
@@ -15,7 +18,17 @@ def crearGrupos():
               "Horario: ", trainers[i]["hora_inicio"],
               "-", trainers[i]["hora_fin"])
 
-    profe = int(input("Seleccione profesor: "))
+    profe_input = input("Seleccione profesor: ")
+    try:
+        profe = int(profe_input)
+    except (ValueError, TypeError):
+        print("Selección inválida. Operación cancelada.")
+        return
+
+    if profe < 1 or profe > len(trainers):
+        print("Profesor inválido.")
+        return
+
     trainer = trainers[profe-1]
 
     print("Bloques disponibles:")
@@ -55,12 +68,6 @@ def crearGrupos():
     hora_inicio = bloques[bloque_hora-1][0]
     hora_fin = bloques[bloque_hora-1][1]
 
-    for g in grupos:
-        if g.get("idGrupo") == nombre_grupo:
-            print("Ya existe un grupo con ese id:", nombre_grupo)
-            return
-
-    # validar especialidades
     if "especialidad" not in trainer or not trainer["especialidad"]:
         print("Este profesor no tiene especialidades registradas.")
         return
@@ -100,6 +107,32 @@ def crearGrupos():
     nombre_backend = f"Backend {ruta.strip().title()}"
     modulos.append({"nombre": nombre_backend, "evaluaciones": []})
 
+    if hora_inicio < 12:
+        jornada = "Mañana"
+    else:
+        jornada = "Tarde"
+
+    fecha_inicio_str = input("Ingrese fecha de inicio (año/mes/dia): ")
+    try:
+        fecha_inicio = datetime.strptime(fecha_inicio_str, "%Y/%m/%d").date()
+    except ValueError:
+        print("Formato de fecha inválido. Use año/mes/dia (ej: 2026/02/16).")
+        return
+
+    def add_10_months(d: date) -> date:
+        m = d.month + 10
+        y = d.year + (m - 1) // 12
+        m = (m - 1) % 12 + 1
+        day = min(d.day, calendar.monthrange(y, m)[1])
+        return date(y, m, day)
+
+    fecha_fin = add_10_months(fecha_inicio)
+    # Guardar fechas como strings para que json.dump las serialice correctamente
+    fecha_inicio1 = fecha_inicio.strftime("%Y-%m-%d")
+    fecha_fin1 = fecha_fin.strftime("%Y-%m-%d")
+
+    
+
     nuevo_grupo = {
         "idGrupo": nombre_grupo,
         "trainer_id": trainer["id"],
@@ -107,6 +140,9 @@ def crearGrupos():
         "salon": salon,
         "hora_inicio": hora_inicio,
         "hora_fin": hora_fin,
+        "jornada": jornada,
+        "fecha_inicio": fecha_inicio1,
+        "fecha_fin": fecha_fin1,
         "estado": "Planeado",
         "campers": [],
         "modulos": modulos
