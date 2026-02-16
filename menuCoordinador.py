@@ -18,6 +18,9 @@ def cargar_campers():
         campers = []
     return campers
 
+with open ("jsons/Trainers.json", "r", encoding="utf-8") as file:
+    trainers = json.load(file)
+
 
 def guardar_campers(campers):
     with open("jsons/Campers.json", "w", encoding="utf-8") as archivo:
@@ -251,11 +254,17 @@ def menuCoordinador():
                 if not hay_calificaciones:
                     print("No hay calificaciones registradas para este grupo.")
         elif opcion == "8":
+            with open("jsons/Trainers.json", "r", encoding="utf-8") as file:
+                trainers = json.load(file)
+            
             print("-----------------------------------")
             print("1.campers y trainers que se encuentren asociados a una ruta")
-            print("2.Mostrar cuantos campers perdieron y aprobaron cada uno de los módulos teniendo en cuenta la ruta de entrenamiento y el entrenador encargado ")
+            print("2.Mostrar cuantos campers perdieron y aprobaron cada uno de los " \
+            "módulos teniendo en cuenta la ruta de entrenamiento y el entrenador encargado ")
             print("3.ver los estudiantes en alto riesgo puntaje en modulo < 60 ")
             print("4.un llamado de atencion al estudiante por su puntaje en ese modulo ")
+            print("5.Crear Trainers nuevos")
+            print("6.Salir del modulo de reportes")
             print("-----------------------------------")
             opcion_reportes = input("Ingrese el numero de la opcion que desea: ")
 
@@ -319,7 +328,41 @@ def menuCoordinador():
                                 print(f"Camper ID: {ev.get('idCamper')} | Módulo: {modulo.get('nombre')} | Definitiva: {ev.get('definitiva')}")
                                 print("Llamado de atención: Se recomienda al estudiante mejorar su desempeño en este módulo para evitar riesgos académicos.")
             
-            
+            elif opcion_reportes == "5":
+                print("Crear Trainers nuevos")
+                print("------------------------------------------------------------------------------------------")
+                nombre = input("Ingrese el nombre del nuevo trainer: ")
+                gmail = input("Ingrese el correo electrónico del nuevo trainer: ")
+                contraseña = input("Ingrese la contraseña del nuevo trainer: ")
+                hora_inicio = input("Ingrese la hora de inicio de disponibilidad (Horario militar de (0 a 24)): ")
+                hora_fin = input("Ingrese la hora de fin de disponibilidad (Horario militar de (0 a 24)): ")
+                repito = int(input("Cuantas especialidades tiene el trainer? "))
+                for i in range(repito):
+                    especialidad = input("Ingrese la especialidad del nuevo trainer: ")
+                rol = "Trainer"
+
+                nuevo_trainer = {
+                    "id": len(trainers) + 1,
+                    "nombre": nombre,
+                    "gmail": gmail,
+                    "contraseña": contraseña,
+                    "hora_inicio": hora_inicio,
+                    "hora_fin": hora_fin,
+                    "especialidad": [especialidad],
+                    "rol": rol
+                }
+                trainers.append(nuevo_trainer)
+                with open("jsons/Trainers.json", "w", encoding="utf-8") as file:
+                    json.dump(trainers, file, indent=4, ensure_ascii=False)
+
+                print("Trainer creado exitosamente")
+                print("-------------------------------------------------------------------------------------------")
+                
+
+
+            elif opcion_reportes == "6":
+                print("Saliendo del módulo de reportes...")
+                break
             
 
         elif opcion == "9":

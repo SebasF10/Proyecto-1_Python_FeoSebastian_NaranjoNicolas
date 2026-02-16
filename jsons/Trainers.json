@@ -1,6 +1,4 @@
-
 [
-    
     {
         "id": 1,
         "nombre": "Edwin Salas",
@@ -8,57 +6,85 @@
         "contraseña": "pass1234",
         "hora_inicio": 6,
         "hora_fin": 14,
-        "especialidad": ["JAVA", "NETCORE"],
+        "especialidad": [
+            "JAVA",
+            "NETCORE"
+        ],
         "rol": "Trainer"
     },
     {
-        "id":2,
+        "id": 2,
         "nombre": "Pedro",
         "gmail": "pedro@gmail.com",
         "contraseña": "pedro123",
         "hora_inicio": 6,
         "hora_fin": 18,
-        "especialidad": ["NodeJS", "JAVA"],
+        "especialidad": [
+            "NodeJS",
+            "JAVA"
+        ],
         "rol": "Trainer"
     },
     {
-        "id":3,
+        "id": 3,
         "nombre": "Jholver",
         "gmail": "jholver@gmail.com",
         "contraseña": "jholver123",
         "hora_inicio": 6,
         "hora_fin": 14,
-        "especialidad": ["JAVA", "NETCORE"],
+        "especialidad": [
+            "JAVA",
+            "NETCORE"
+        ],
         "rol": "Trainer"
     },
     {
-        "id":4,
+        "id": 4,
         "nombre": "Cristian",
         "gmail": "cristian@gmail.com",
         "contraseña": "cristian123",
         "hora_inicio": 10,
         "hora_fin": 18,
-        "especialidad": ["JAVA", "NodeJS"],
+        "especialidad": [
+            "JAVA",
+            "NodeJS"
+        ],
         "rol": "Trainer"
     },
     {
-        "id":5,
+        "id": 5,
         "nombre": "Kevin David",
         "gmail": "kevin.david@gmail.com",
         "contraseña": "kevin123",
         "hora_inicio": 6,
         "hora_fin": 14,
-        "especialidad": ["JAVA"],
+        "especialidad": [
+            "JAVA"
+        ],
         "rol": "Trainer"
     },
     {
-        "id":6,
+        "id": 6,
         "nombre": "Carlos Rueda",
         "gmail": "carlos.rueda@gmail.com",
         "contraseña": "carlos123",
-        "hora_inicio": 14, 
+        "hora_inicio": 14,
         "hora_fin": 22,
-        "especialidad": ["JAVA"],
+        "especialidad": [
+            "JAVA"
+        ],
+        "rol": "Trainer"
+    },
+    {
+        "id": 7,
+        "nombre": "Nicolas",
+        "gmail": "nico@gmail.com",
+        "contraseña": "nico123",
+        "hora_inicio": "6",
+        "hora_fin": "12",
+        "especialidad": [
+            "Java"
+        ],
         "rol": "Trainer"
     }
 ]
