@@ -15,7 +15,7 @@ def crearGrupos():
     print("Profesores disponibles:")
     for i in range(len(trainers)):
         print(i+1, ".", trainers[i]["nombre"],
-              "Horario: ", trainers[i]["hora_inicio"],
+              "Horario: ", trainers[i]["hora_inicio"], 
               "-", trainers[i]["hora_fin"])
 
     profe_input = input("Seleccione profesor: ")
@@ -41,8 +41,8 @@ def crearGrupos():
         fin = inicio + 4
         ocupado = False
 
-        for g in grupos:
-            if g["trainer_id"] == trainer["id"] and g["hora_inicio"] == inicio:
+        for i in grupos:
+            if i["trainer_id"] == trainer["id"] and i["hora_inicio"] == inicio:
                 ocupado = True
                 break
 
@@ -71,6 +71,7 @@ def crearGrupos():
     if "especialidad" not in trainer or not trainer["especialidad"]:
         print("Este profesor no tiene especialidades registradas.")
         return
+    
 
     letra = trainer["nombre"][0].upper()
     nombre_grupo = letra + str(bloque_hora)
@@ -93,8 +94,8 @@ def crearGrupos():
     salon_op = int(input("Seleccione salon: "))
     salon = salones[salon_op-1]["nombre"]
 
-    for g in grupos:
-        if g.get("idGrupo") == nombre_grupo:
+    for i in grupos:
+        if i.get("idGrupo") == nombre_grupo:
             print("Ya existe un grupo con ese id:", nombre_grupo)
             return
 

@@ -264,7 +264,8 @@ def menuCoordinador():
             print("3.ver los estudiantes en alto riesgo puntaje en modulo < 60 ")
             print("4.un llamado de atencion al estudiante por su puntaje en ese modulo ")
             print("5.Crear Trainers nuevos")
-            print("6.Salir del modulo de reportes")
+            print("6.cambio de estado de  estudiantes")
+            print("7.salir del modulo de reportes-")
             print("-----------------------------------")
             opcion_reportes = input("Ingrese el numero de la opcion que desea: ")
 
@@ -358,9 +359,45 @@ def menuCoordinador():
                 print("Trainer creado exitosamente")
                 print("-------------------------------------------------------------------------------------------")
                 
-
-
             elif opcion_reportes == "6":
+                print("Cambio de estado de estudiantes")
+                print("-----------------------------------")
+                
+                # Mostrar lista numerada de estudiantes
+                print("Seleccione el estudiante:")
+                for index, camper in enumerate(campers, 1):
+                    print(f"{index}. {camper['nombre']} (ID: {camper['idCamper']}) - Estado: {camper['estado']}")
+                
+                try:
+                    opcion_estudiante = int(input("Ingrese el número del estudiante: "))
+                    if opcion_estudiante < 1 or opcion_estudiante > len(campers):
+                        print("Opción inválida")
+                        continue
+                    
+                    camper_seleccionado = campers[opcion_estudiante - 1]
+                    
+                    # Mostrar lista de estados posibles
+                    print("Seleccione el nuevo estado:")
+                    estados_disponibles = ["proceso de ingreso", "inscrito", "aprobado", "cursando", "egresado", "retirado","Expulsado"]
+                    for index, estado in enumerate(estados_disponibles, 1):
+                        print(f"{index}. {estado}")
+                    
+                    opcion_estado = int(input("Ingrese el número del estado: "))
+                    if opcion_estado < 1 or opcion_estado > len(estados_disponibles):
+                        print("Opción de estado inválida")
+                        continue
+                    
+                    nuevo_estado = estados_disponibles[opcion_estado - 1]
+                    
+                    # Actualizar estado
+                    camper_seleccionado["estado"] = nuevo_estado
+                    guardar_campers(campers)
+                    print(f"Estado actualizado correctamente a '{nuevo_estado}' para {camper_seleccionado['nombre']}")
+                    
+                except ValueError:
+                    print("Entrada inválida. Ingrese un número válido.")
+
+            elif opcion_reportes == "7":
                 print("Saliendo del módulo de reportes...")
                 break
             

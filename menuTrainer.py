@@ -174,6 +174,7 @@ def menuTrainer(trainer):
 
                                 guardar_grupos(grupos)
 
+
                             print("Nota final:", definitiva)
                             with open("jsons/Grupos.json", "w", encoding="utf-8") as file:
                                 json.dump(grupos, file, indent=2, ensure_ascii=False)
