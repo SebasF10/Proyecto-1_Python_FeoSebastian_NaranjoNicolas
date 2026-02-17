@@ -162,6 +162,8 @@ def menuCoordinador():
            
             camper_encontrado["estado"] = "cursando"
 
+            grupo_encontrado["estado"] = "activo"
+
             guardar_campers(campers)
             guardar_grupos(grupos)
             print("grupo asignado correctamente")
@@ -321,13 +323,61 @@ def menuCoordinador():
             elif opcion_reportes == "4":
                 with open("jsons/Grupos.json", "r", encoding="utf-8") as file:
                     grupos = json.load(file)
-                print("Llamados de atención para estudiantes con puntaje en módulo < 60:")
+                
+                print("Estudiantes en alto riesgo (definitiva < 60):")
+                print("-----------------------------------")
+                
+                estudiantes_riesgo = []
                 for grupo in grupos:
                     for modulo in grupo.get("modulos", []):
                         for ev in modulo.get("evaluaciones", []):
                             if ev.get("definitiva", 0) < 60:
-                                print(f"Camper ID: {ev.get('idCamper')} | Módulo: {modulo.get('nombre')} | Definitiva: {ev.get('definitiva')}")
-                                print("Llamado de atención: Se recomienda al estudiante mejorar su desempeño en este módulo para evitar riesgos académicos.")
+                                estudiantes_riesgo.append({
+                                    "idCamper": ev.get("idCamper"),
+                                    "modulo": modulo.get("nombre"),
+                                    "definitiva": ev.get("definitiva"),
+                                    "grupo": grupo.get("idGrupo")
+                                })
+                
+                if not estudiantes_riesgo:
+                    print("No hay estudiantes en alto riesgo.")
+                else:
+                    for i, est in enumerate(estudiantes_riesgo, 1):
+                        print(f"{i}. Camper ID: {est['idCamper']} | Módulo: {est['modulo']} | Definitiva: {est['definitiva']}")
+                    
+                    try:
+                        opcion_est = int(input("Seleccione el número del estudiante para crear el reporte: "))
+                        if opcion_est < 1 or opcion_est > len(estudiantes_riesgo):
+                            print("Opción inválida")
+                        else:
+                            est_seleccionado = estudiantes_riesgo[opcion_est - 1]
+                            
+                            for camper in campers:
+                                if camper["idCamper"] == est_seleccionado["idCamper"]:
+                                    fecha = input("Ingrese la fecha del reporte (ej: 17/02/2026): ")
+                                    asunto = f"Llamado de atención - Módulo {est_seleccionado['modulo']}"
+                                    descripcion = f"El estudiante obtuvo una calificación de {est_seleccionado['definitiva']} en el módulo {est_seleccionado['modulo']}. Se recomienda mejorar el desempeño para evitar riesgos académicos. "
+                                    observaciones = input("Ingrese observaciones adicionales: ")
+                                    
+                                    descripcion_final = f"Calificación en {est_seleccionado['modulo']}: {est_seleccionado['definitiva']}. Observaciones: {observaciones}"
+                                    
+                                    nuevo_reporte = {
+                                        "fecha": fecha,
+                                        "asunto": asunto,
+                                        "descripcion": descripcion_final,
+                                        "coordinador": "Coordinador",
+                                        "tipo": "Llamado de atención"
+                                    }
+                                    
+                                    if "reportes" not in camper:
+                                        camper["reportes"] = []
+                                    
+                                    camper["reportes"].append(nuevo_reporte)
+                                    guardar_campers(campers)
+                                    print(f"Reporte de atención creado exitosamente para Camper ID: {camper['idCamper']}")
+                                    break
+                    except ValueError:
+                        print("Entrada inválida. Ingrese un número válido.")
             
             elif opcion_reportes == "5":
                 print("Crear Trainers nuevos")

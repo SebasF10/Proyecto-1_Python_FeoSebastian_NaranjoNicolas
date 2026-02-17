@@ -18,7 +18,8 @@
             "nota": null,
             "resultado": null,
             "jornada": null
-        }
+        },
+        "reportes": []
     },
     {
         "idCamper": 2,
@@ -39,7 +40,16 @@
             "nota": null,
             "resultado": "aprobado",
             "jornada": "mañana"
-        }
+        },
+        "reportes": [
+            {
+                "fecha": "12/07/2025",
+                "asunto": "Llamado de atención - Módulo Fundamentos",
+                "descripcion": "Calificación en Fundamentos: 10.0. Observaciones: falta de respeto al trainer",
+                "coordinador": "Coordinador",
+                "tipo": "Llamado de atención"
+            }
+        ]
     },
     {
         "idCamper": 3,
@@ -60,6 +70,7 @@
             "nota": null,
             "resultado": null,
             "jornada": "tarde"
-        }
+        },
+        "reportes": []
     }
 ]

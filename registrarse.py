@@ -55,8 +55,8 @@ def registrarse():
             "grupo": grupo,
             "fecha": fecha,
             "nota": nota,
-            "resultado": resultado
-
+            "resultado": resultado,
+            "reportes": []
         }
         campers.append(nuevo_camper)
         

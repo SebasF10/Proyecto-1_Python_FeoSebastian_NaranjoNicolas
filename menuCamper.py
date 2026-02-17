@@ -30,7 +30,8 @@ def menuCamper(camper_actual):
         print("2. Ver datos del grupo al que perteneces")
         print("3. ver sus notas de cada modulo")
         print("4. Revisar Estado")
-        print("5. Salir")
+        print("5. Ver reportes del coordinador")
+        print("6. Salir")
         print("-----------------------------------------------")
         opcion = input("Ingrese el numero de la opcion que desea: ")
 
@@ -143,6 +144,21 @@ def menuCamper(camper_actual):
             print("-----------------------------------------------")
 
         elif opcion == "5":
+            print("---Tus reportes del coordinador---")
+            print("-----------------------------------------------")
+            if camper_actual.get("reportes") and len(camper_actual["reportes"]) > 0:
+                for index, reporte in enumerate(camper_actual["reportes"], 1):
+                    print(f"Reporte #{index}")
+                    print(f"Fecha: {reporte.get('fecha')}")
+                    print(f"Asunto: {reporte.get('asunto')}")
+                    print(f"Descripción: {reporte.get('descripcion')}")
+                    print(f"Por: {reporte.get('coordinador')}")
+                    print("-----------------------------------------")
+            else:
+                print("No tienes reportes registrados.")
+            print("-----------------------------------------------")
+
+        elif opcion == "6":
             print("Saliendo del menu camper...")
             break
 
